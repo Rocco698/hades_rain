@@ -103,27 +103,27 @@ clad11 = plane_from_points(
 clad12 = plane_from_points(
     [-1.21,0,0],
     [-0.61,1.05,0],
-    [-0.61,1.05,0],
+    [-0.61,1.05,1],
     boundary_type='reflective'
 )
-end0 = openmc.ZPlane(0, boundary_type='reflective')
-end1 = openmc.ZPlane(1, boundary_type='reflective')
 
 
 
-region_fuel = +annularclad_out & -fuel_out
-region_clad = -clad2 & +clad4 & +clad6 & +clad8 & -clad10 & -clad12 & +clad1 & -clad3 & -clad5 & -clad7 & +clad9 & +clad11
-region_clad_1 = +annularclad_in & -annularclad_out
-region_moderator = -annularclad_in & +clad2 & -clad4 & -clad6 & -clad8 & -clad10 & +clad12
-region_gap = +fuel_out & -clad1 & +clad3 & +clad5 & +clad7 & +clad9 & +clad11
+moderator_center = -annularclad_in
+annular_cladding = +annularclad_in & -annularclad_out
+region_fuel_in = +annularclad_out & -fuel_out
+region_gap = +fuel_out & -clad1 & -clad3 & -clad5 & -clad7 & -clad9 & clad11
+region_cladding = +clad1 & + clad3 & +clad5 & +clad7 & +clad9 & +clad11 & -clad2 & -clad4 & -clad6 & -clad8 & -clad10 & -clad12
+region_moderator = +clad2 & +clad4 & +clad6 & +clad8 & +clad10 & +clad12
 
+moderator_cell_1 = openmc.Cell(name='moderator', fill=moderator, region=moderator_center)
+annular_cladding_cell = openmc.Cell(name='Cladding', fill=clad, region=annular_cladding)
+fuel_cell = openmc.Cell(name='fuel', fill=fuel, region=region_fuel_in)
+gap_cell = openmc.Cell(name='Gap', fill=moderator, region=region_gap)
+cladding_outer_cell = openmc.Cell(name='Cladding Outer', fill=clad, region=region_cladding)
+moderator_out_cell = openmc.Cell(name='Moderator Outer', fill=moderator, region=region_moderator)
 
-fuel_cell = openmc.Cell(name='fuel', fill=fuel, region=region_fuel)
-clad_cell = openmc.Cell(name='clad', fill=clad, region=region_clad)
-clad_cell1 = openmc.Cell(name='clad', fill=clad, region=region_clad_1)
-moderator_cell = openmc.Cell(name='moderator', fill=moderator, region=region_moderator)
-
-geometry = openmc.Geometry([fuel_cell, clad_cell, clad_cell1, moderator_cell])
+geometry = openmc.Geometry([moderator_cell_1, annular_cladding_cell, fuel_cell, gap_cell, cladding_outer_cell, moderator_out_cell])
 geometry.export_to_xml()
 
 print(geometry)
