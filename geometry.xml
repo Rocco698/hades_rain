@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<geometry>
+  <cell id="1" material="1" name="fuel" region="3 -1" universe="1"/>
+  <cell id="2" material="2" name="clad" region="-5 7 9 11 -13 -15 4 -6 -8 -10 12 14" universe="1"/>
+  <cell id="3" material="2" name="clad" region="2 -3" universe="1"/>
+  <cell id="4" material="3" name="moderator" region="-2 5 -7 -9 -11 -13 15" universe="1"/>
+  <surface coeffs="0.0 0.0 0.9" id="1" type="z-cylinder"/>
+  <surface coeffs="0.0 0.0 0.15" id="2" type="z-cylinder"/>
+  <surface coeffs="0.0 0.0 0.25" id="3" type="z-cylinder"/>
+  <surface boundary="reflective" coeffs="1" id="4" type="y-plane"/>
+  <surface boundary="reflective" coeffs="1.05" id="5" type="y-plane"/>
+  <surface boundary="reflective" coeffs="-1.0 -0.57 0.0 -1.15" id="6" type="plane"/>
+  <surface boundary="reflective" coeffs="-1.05 -0.6 0.0 -1.2705" id="7" type="plane"/>
+  <surface boundary="reflective" coeffs="-1.0 0.57 0.0 -1.15" id="8" type="plane"/>
+  <surface boundary="reflective" coeffs="-1.05 0.6 0.0 -1.2705" id="9" type="plane"/>
+  <surface boundary="reflective" coeffs="-1" id="10" type="y-plane"/>
+  <surface boundary="reflective" coeffs="-1.05" id="11" type="y-plane"/>
+  <surface boundary="reflective" coeffs="1.0 0.57 0.10000000000000009 -1.15" id="12" type="plane"/>
+  <surface boundary="reflective" coeffs="-1.05 0.6 0.0 1.2705" id="13" type="plane"/>
+  <surface boundary="reflective" coeffs="1.0 -0.57 0.0 -1.15" id="14" type="plane"/>
+  <surface boundary="reflective" coeffs="1.05 -0.6 0.0 -1.2705" id="15" type="plane"/>
+</geometry>
