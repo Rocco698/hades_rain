@@ -40,30 +40,45 @@ mat_list.cross_sections = "/Users/rocco698/Desktop/Undergrad/Fall Semester - 202
 # ################################################
 
 # outer / inner edge length (length of one hex side) in cm
-edge_outer = 1.0
-edge_inner = 0.6
+edge_outer_cladding = 1.21
+edge_inner_cladding = 1.15
+edge_fuel_pellet = 1.1
+
 
 # create composite hexagonal prism surfaces
-hex_outer = openmc.model.HexagonalPrism(edge_length=edge_outer, orientation='y',
-                           origin=(0.0, 0.0), boundary_type='reflective')
-hex_inner = openmc.model.HexagonalPrism(edge_length=edge_inner, orientation='y',
-                           origin=(0.0, 0.0), boundary_type='reflective')
+hex_outer_clad = openmc.model.hexagonal_prism(edge_length=edge_outer_cladding, orientation='x', origin=(0.0, 0.0), boundary_type='reflective', corner_radius=0.0)
 
-# get interior regions (unary - gives interior region)
-region_outer = -hex_outer    # interior of outer hex
-region_inner = -hex_inner    # interior of inner hex
+hex_inner_clad = openmc.model.hexagonal_prism(edge_length=edge_inner_cladding, orientation='x', origin=(0.0, 0.0), boundary_type='reflective', corner_radius=0.0)
 
-# Z bounds for prism (height = 1.0)
-z_min = openmc.ZPlane(z0=0.0, boundary_type='reflective')
-z_max = openmc.ZPlane(z0=1.0, boundary_type='reflective')
+fuel_pellet = openmc.model.hexagonal_prism(edge_length=edge_inner_cladding, orientation='x', origin=(0.0, 0.0), boundary_type='reflective', corner_radius=0.0)
 
-# hollow hex region = outer interior MINUS inner interior, extruded in Z
-hollow_hex_region = region_outer & ~region_inner & +z_min & -z_max
+annular_clad_out = openmc.ZCylinder(r=0.25, boundary_type='reflective')
 
-# create a cell (no material needed if only visualizing)
-hollow_cell = openmc.Cell(name='hollow_hex', fill=moderator, region=hollow_hex_region)
+annular_clad_in = openmc.ZCylinder(r=0.225, boundary_type='reflective')
 
-geometry = openmc.Geometry([hollow_cell])
+region_annular_coolant = -annular_clad_in
+
+region_annular_cladding = +annular_clad_in & -annular_clad_out
+
+region_fuel = +annular_clad_out & fuel_pellet
+
+region_gap = ~fuel_pellet & hex_inner_clad
+
+region_clad = hex_outer_clad & ~hex_inner_clad
+
+annular_coolant_cell = openmc.Cell(name='Annular Coolant Channel', fill=moderator, region=region_annular_coolant)
+
+annular_clad_cell = openmc.Cell(name='Annular Cladding', fill=clad, region=region_annular_cladding)
+
+fuel_cell = openmc.Cell(name='Fuel', fill=fuel, region=region_fuel)
+
+gap_cell = openmc.Cell(name='gap', fill=moderator, region=region_gap)
+
+clad_cell = openmc.Cell(name='cladding', fill=clad, region=region_clad)
+
+
+
+geometry = openmc.Geometry([annular_coolant_cell, annular_clad_cell, fuel_cell, gap_cell, clad_cell])
 geometry.export_to_xml()
 
 print(geometry)
@@ -85,7 +100,7 @@ print(settings)
 # ################################
 #  Plots Definition
 # ################################
-ww = 1
+ww = 3
 plot1 = openmc.Plot()
 plot1.width = (ww,ww)
 plot1.basis = 'xy'
