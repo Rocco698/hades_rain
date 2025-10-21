@@ -18,7 +18,7 @@ Height less than 5m
 
 We chose plutonium as our fuel choice 
 
-### Coolant Type:Heavy Water with Graphite-doped Stainless Steel clad
+### Coolant Type: Heavy Water with Graphite-doped Stainless Steel clad
 
 Heavy water became our standout coolant type mostly due to it's exceptionally low absorption cross sections. We want the least amount of parasitic absorptions so that we can have as low enriched a fuel as possible, making for the most economically sustainable fuel cycle as possible.
 
