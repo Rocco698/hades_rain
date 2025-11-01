@@ -50,7 +50,9 @@ Pure Liquid Sodium Coolant and it has HALEU metal fuel
 
 - Discuss operating temperatures and temperature limits.
 
+Inlet: 360 C
 
+Outlet: 510 C
 
 - How many assemblies?
 
@@ -61,8 +63,3 @@ Pure Liquid Sodium Coolant and it has HALEU metal fuel
 48 Shielding Assemblies
 
 10 Control Rod Assemblies
-
-
-- Inlet/Outlet Temp:
-
-360 / 510 $\deg$C
