@@ -40,26 +40,21 @@ With fuel tipped-rods, their insertion adds a drastic amount of negative reactiv
 
 - Identify the reactor you chose.
 
-Natrium SFR
+EBR-II
+
 - Provide a schematic of the reactor showing for example how many
 loops it has (DC, primary-secondary, primary-secondary-ternary, etc ..). --> See files
 
 - What is the coolant? What is the fuel?
 
-Pure Liquid Sodium Coolant and it has HALEU metal fuel
+Pure Liquid Sodium Coolant (primary & secondary) and it has HALEU metal fuel
 
 - Discuss operating temperatures and temperature limits.
 
-Inlet: 360 C
+Inlet: 644.26 K
 
-Outlet: 510 C
+Outlet: 746.0 K
 
 - How many assemblies?
 
-54 Fuel assemblies w/ 169 rod/assemblies
 
-78 Reflector Assemblies
-
-48 Shielding Assemblies
-
-10 Control Rod Assemblies
