@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 # ##############################################
 fuel = openmc.Material(name='puo2', temperature=300)
 fuel.set_density('g/cm3', 11.46)
-fuel.add_element('Pu', 1.0, enrichment=3.5)
+fuel.add_element('Pu', 1.0, enrichment=19.5)
 fuel.add_element('O', 2.0)
 fuel.add_s_alpha_beta('c_O_in_PUO2')
 
