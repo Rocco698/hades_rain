@@ -9,11 +9,11 @@ import matplotlib.pyplot as plt
 # ##############################################
 #       MATERIALS
 # ##############################################
-fuel = openmc.Material(name='uo2', temperature=300)
-fuel.set_density('g/cm3', 10.97)
-fuel.add_element('U', 1.0, enrichment=3.5)
+fuel = openmc.Material(name='puo2', temperature=300)
+fuel.set_density('g/cm3', 11.46)
+fuel.add_element('Pu', 1.0, enrichment=3.5)
 fuel.add_element('O', 2.0)
-fuel.add_s_alpha_beta('c_O_in_UO2')
+fuel.add_s_alpha_beta('c_O_in_PUO2')
 
 clad = openmc.Material(name='Zr', temperature=300)
 clad.set_density('g/cm3', 3.2)
