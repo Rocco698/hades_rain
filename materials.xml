@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<materials>
+  <cross_sections>/data/endfb-viii.0-hdf5/cross_sections.xml</cross_sections>
+  <material depletable="true" id="1" name="uo2" temperature="300" volume="11444950.917724635">
+    <density units="g/cm3" value="10.97"/>
+    <nuclide ao="0.00022623866604837907" name="U234"/>
+    <nuclide ao="0.025311602469735968" name="U235"/>
+    <nuclide ao="0.9743462195673366" name="U238"/>
+    <nuclide ao="1.999242" name="O16"/>
+    <nuclide ao="0.000758" name="O17"/>
+    <nuclide ao="0.00011593929687911323" name="U236"/>
+    <sab name="c_O_in_UO2"/>
+  </material>
+  <material id="2" name="Zr" temperature="300">
+    <density units="g/cm3" value="3.2"/>
+    <nuclide ao="0.5145" name="Zr90"/>
+    <nuclide ao="0.1122" name="Zr91"/>
+    <nuclide ao="0.1715" name="Zr92"/>
+    <nuclide ao="0.1738" name="Zr94"/>
+    <nuclide ao="0.028" name="Zr96"/>
+  </material>
+  <material id="3" name="water" temperature="300">
+    <density units="g/cm3" value="1"/>
+    <nuclide ao="1.99968852" name="H1"/>
+    <nuclide ao="0.00031148" name="H2"/>
+    <nuclide ao="0.999621" name="O16"/>
+    <nuclide ao="0.000379" name="O17"/>
+    <sab name="c_H_in_H2O"/>
+  </material>
+  <material id="4" name="Helium" temperature="300">
+    <density units="sum"/>
+    <nuclide ao="1.9999999999999998e-17" name="He3"/>
+    <nuclide ao="9.999979999999999e-12" name="He4"/>
+  </material>
+  <material id="5" name="Boron Carbide" temperature="300">
+    <density units="g/cm3" value="2.52"/>
+    <nuclide ao="0.7928" name="B10"/>
+    <nuclide ao="3.2072" name="B11"/>
+    <nuclide ao="0.989" name="C12"/>
+  </material>
+</materials>
